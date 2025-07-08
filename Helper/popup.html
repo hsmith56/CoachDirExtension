@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Directory Scanner</title>
+  <style>
+    .slider-label { display: block; margin-top: 10px; }
+    .slider-value { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h3>Scan School Links</h3>
+  <label class="slider-label">
+    Tabs at once:
+    <input type="range" id="batchSizeSlider" min="1" max="10" value="3">
+    <span id="batchSizeValue" class="slider-value">3</span>
+  </label>
+
+  <button id="startScan">Start Scan</button>
+  <button id="resetScan">Reset</button>
+  <script src="popup.js"></script>
+</body>
+</html>
