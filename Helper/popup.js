@@ -30,14 +30,16 @@ function collectLinksAndStart(batchSize) {
   const links = anchors.map(a => a.href);
 
   const select = document.getElementById('id_roles');
+  let roles = [];
   if (!select || select.selectedOptions.length === 0) {
     alert("Please select at least one position first.");
-    return;
+    
   }
-
-  const roles = Array.from(select.selectedOptions).map(opt =>
-    opt.textContent.trim().split('(')[0].trim()
-  );
+  else {
+    roles = Array.from(select.selectedOptions).map(opt =>
+      opt.textContent.trim().split('(')[0].trim()
+    );
+  }
 
   // Example: Collect search params from URL (customize as needed)
   const urlParams = new URLSearchParams(window.location.search);

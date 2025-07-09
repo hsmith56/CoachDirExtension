@@ -56,12 +56,6 @@ function processNext(urls, index) {
         results.push(...people);
         chrome.tabs.remove(tab.id, () => {
           completed++;
-          // if (completed === batch.length) {
-          //   const delay = Math.random() * 1250 + 250;
-          //   setTimeout(() => {
-          //     processNext(urls, index + batchSize);
-          //   }, delay);
-          // }
           if (completed === batch.length) {
             processNext(urls, index + batchSize);
           }
@@ -102,8 +96,8 @@ function extractPeopleForRoles(roles) {
       const email = cells[3]?.querySelector('.email-hidden')?.textContent?.trim() || "";
 
       // Match one of the selected roles
-      const matched = roles.find(role => position.includes(role.toLowerCase()));
-      if (matched && name && email) {
+      // const matched = roles.find(role => position.includes(role.toLowerCase()));
+      if (name && email) {
         const [firstName, lastName] = name.split(" ", 2);
         people.push({
           position,
@@ -134,12 +128,12 @@ function downloadResults() {
   console.log("CSV to be downloaded:\n", csv);
 
   // Generate a dynamic filename using roles and search params
-  let rolePart = roleKeywords.length ? roleKeywords.join('_').replace(/[^a-z0-9]/gi, '_').toLowerCase() : "roles";
+
   const radius = searchParams.radius 
   const city = searchParams.city 
   const state = searchParams.state 
   
-  const filename = `${rolePart} - ${radius} miles - ${city} - ${state}`.toLowerCase()
+  const filename = `${radius} miles - ${city} - ${state}`.toLowerCase()
     .replace(/[\/\\:*?"<>|]+/g, '') // remove illegal filename characters
     .replace(/\s+/g, ' ')           // normalize whitespace
     .trim() + ".csv";

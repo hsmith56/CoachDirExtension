@@ -22,7 +22,7 @@
     const name = tds[2].textContent.trim();
     const email = tds[3]?.querySelector('.email-hidden')?.textContent.trim();
 
-    if (roles.some(r => position.includes(r.toLowerCase())) && name && email) {
+    if (name && email) {
       const [first, last] = name.split(" ", 2);
       results.push({
         first: first || "",
@@ -30,7 +30,8 @@
         email,
         school: schoolName,
         city,
-        state
+        state,
+        position
       });
     }
   });
