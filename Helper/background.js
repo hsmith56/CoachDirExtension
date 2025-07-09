@@ -56,6 +56,12 @@ function processNext(urls, index) {
         results.push(...people);
         chrome.tabs.remove(tab.id, () => {
           completed++;
+          // if (completed === batch.length) {
+          //   const delay = Math.random() * 1250 + 250;
+          //   setTimeout(() => {
+          //     processNext(urls, index + batchSize);
+          //   }, delay);
+          // }
           if (completed === batch.length) {
             processNext(urls, index + batchSize);
           }
