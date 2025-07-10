@@ -56,16 +56,16 @@ function processNext(urls, index) {
         results.push(...people);
         chrome.tabs.remove(tab.id, () => {
           completed++;
-          if (completed === batch.length) {
-
-            // if (completed === batch.length) {
-          //   const delay = Math.random() * 1250 + 250;
-          //   setTimeout(() => {
-          //     processNext(urls, index + batchSize);
-          //   }, delay);
+          // if (completed === batch.length) {
+          //   processNext(urls, index + batchSize);
           // }
-            processNext(urls, index + batchSize);
-          }
+            if (completed === batch.length) {
+            // Scale delay with batch size: base 250ms + (batchSize * 1000ms) + random up to 500ms
+            const delay = 250 + (batchSize * 500) + Math.random() * 500;
+            setTimeout(() => {
+              processNext(urls, index + batchSize);
+            }, delay);
+            }
         });
       });
     });

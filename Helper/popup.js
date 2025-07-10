@@ -32,8 +32,8 @@ function collectLinksAndStart(batchSize) {
   const select = document.getElementById('id_roles');
   let roles = [];
   if (!select || select.selectedOptions.length === 0) {
-    alert("Please select at least one position first.");
-    
+    // do nothing, roles stays empty
+    roles = [];
   }
   else {
     roles = Array.from(select.selectedOptions).map(opt =>
