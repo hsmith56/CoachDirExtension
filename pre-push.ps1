@@ -25,15 +25,6 @@ if (Test-Path $folderToZip) {
         git add $zipName
         git commit -m "Auto-add zipped archive of $folderToZip before push" 2>$null
 
-        Write-Output "Pushing with zip file..."
-        git push
-
-        # Optional: cleanup zip file and push removal
-        Write-Output "Cleaning up $zipName..."
-        Remove-Item $zipName
-        git rm $zipName
-        git commit -m "Auto-remove zip archive after push"
-        git push
     } else {
         Write-Output "Failed to create $zipName. Push aborted."
         exit 1
